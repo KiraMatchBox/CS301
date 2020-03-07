@@ -123,7 +123,7 @@ class SLinkedList:
             return temp
 
     #Tests the above functions
-"""llist = SLinkedList()
+llist = SLinkedList()
 
 e1 = Node("Mon")
 e2 = Node("Tue")
@@ -138,10 +138,10 @@ llist.append(e4)
 llist.append(e5)
 llist.Listprint()
 
-llist.pop(1)
+print(llist.pop(1))
 #llist.insert(llist.head.next.next, e4)
 
-llist.Listprint()"""
+llist.Listprint()
 
 
 ###########################################
@@ -242,19 +242,26 @@ class DLinkedList:
         while (printval):
             print(printval.data),
             printval = printval.next
-            if(printval.data==self.head.data):  #because in doubly linked lists
+            if(printval==self.head.data):  #because in doubly linked lists
                 break                           #this would usually loop forever
 
-    def pop(self):
-        last = self.head
-        while(last.next):
-            last = last.next
-        temp = last.data
-        last.last.next=self.head
-        self.deleteNode(last)
-        return temp
+    def pop(self, pos =-1):
+        if pos == -1:
+            last = self.head
+            while(last.next):
+                last = last.next
+            temp = last.data
+            self.deleteNode(last)
+            return temp
+        else:
+            last = self.head
+            for i in range(pos):
+                last = last.next
+            temp = last.data
+            self.deleteNode(last)
+            return temp
 
-"""     Testing the functions above
+""" Testing the functions above
 llist = DLinkedList()
 
 e1 = Node("mon")
@@ -271,11 +278,22 @@ llist.insert(llist.head.next,e3)
 llist.add(e5)
 
 llist.insert(llist.head.next.next,e6)
-print(llist.pop(e6), " should be deleted")
+llist.Listprint() 
+#print(llist.pop(e6), " should be deleted")
 
-llist.Listprint() """
+llist.add(e1)
+llist.add(e2)
+llist.add(e3)
+llist.add(e4)
+llist.add(e5)
+llist.add(e6)
 
-
+llist.Listprint()
+print("__________")
+print(llist.pop(3))
+llist.pop()
+llist.Listprint() 
+"""
 ###########################################
 #                                         #
 #     Question #3                         #
